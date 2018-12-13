@@ -24,8 +24,9 @@ with open('data/trainingdata.yml', 'w') as f:
 
 print("I have successfully imported " + str(lineCount) + " rows of info and will now retrain...")
 
-os.remove("botData.sqlite3")
-print("Clearing my old training data.")
+if os.path.exists("botData.sqlite3"):
+    os.remove("botData.sqlite3")
+    print("Clearing my old training data.")
 
 bot = ChatBot(
     "Sherlock Holmes",

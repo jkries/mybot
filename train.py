@@ -29,7 +29,7 @@ if os.path.exists("botData.sqlite3"):
     print("Clearing my old training data.")
 
 bot = ChatBot(
-    "Sherlock Holmes",
+    "Chat Bot",
     logic_adapters=[
         {
             'import_path': 'chatterbot.logic.BestMatch'

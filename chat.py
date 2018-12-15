@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 bot = ChatBot(
-    "Sherlock Holmes",
+    "ChatBot",
     logic_adapters=[
         {
             'import_path': 'chatterbot.logic.BestMatch'

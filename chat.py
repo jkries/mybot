@@ -43,9 +43,9 @@ def home():
 def get_bot_response():
     userText = request.args.get('msg')
     botReply = str(bot.get_response(userText))
-    # Create a list of non-responses:
-    noResponse = ["I don't know.", "I'm not sure about that.", "Is there a different way you can ask that?","I don't have a response for that.","I will have to give that some thought.","I don't really know what you are asking."]
     if botReply is "IDKnull":
+        # Create a list of non-responses:
+        noResponse = ["I don't know.", "I'm not sure about that.", "Is there a different way you can ask that?","I don't have a response for that.","I will have to give that some thought.","I don't really know what you are asking."]
         botReply = random.choice(noResponse)
     return botReply
 

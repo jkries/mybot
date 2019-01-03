@@ -4,6 +4,11 @@ from chatterbot.response_selection import get_random_response
 import random
 #from chatterbot.trainers import ChatterBotCorpusTrainer
 
+##Experimental Date Time
+from datetime import datetime
+from datetime import date
+import calendar
+
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -31,6 +36,31 @@ bot = ChatBot(
 bot.read_only=True #Comment this out if you want the bot to learn based on experience
 print("Bot Learn Read Only:" + str(bot.read_only))
 
+def getTime():
+    now = datetime.now()
+    mm = str(now.month)
+    dd = str(now.day)
+    yyyy = str(now.year)
+    hour = str(now.hour)
+    minute = str(now.minute)
+    second = str(now.second)
+    mydate = date.today()
+    weekday = calendar.day_name[mydate.weekday()]
+    return "The time is now " + hour + ":" + minute
+
+def getDate():
+    now = datetime.now()
+    mm = str(now.month)
+    dd = str(now.day)
+    yyyy = str(now.year)
+    hour = str(now.hour)
+    minute = str(now.minute)
+    second = str(now.second)
+    mydate = date.today()
+    weekday = calendar.day_name[mydate.weekday()]
+    return "Today is " + weekday + ", " + mm + "/" + dd + "/" + yyyy
+
+
 #You can comment these out for production later since you won't be training everytime:
 #bot.set_trainer(ChatterBotCorpusTrainer)
 #bot.train("data/trainingdata.yml")
@@ -43,10 +73,16 @@ def home():
 def get_bot_response():
     userText = request.args.get('msg')
     botReply = str(bot.get_response(userText))
-    if botReply is "IDKnull":
+    if botReply == "IDKnull":
         # Create a list of non-responses:
         noResponse = ["I don't know.", "I'm not sure about that.", "Is there a different way you can ask that?","I don't have a response for that.","I will have to give that some thought.","I don't really know what you are asking."]
         botReply = random.choice(noResponse)
+    elif botReply == "getTIME":
+        botReply = getTime()
+        print(getTime())
+    elif botReply == "getDATE":
+        botReply = getDate()
+        print(getDate())
     return botReply
 
 if __name__ == "__main__":

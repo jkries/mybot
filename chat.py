@@ -5,9 +5,7 @@ import random
 #from chatterbot.trainers import ChatterBotCorpusTrainer
 
 ##Experimental Date Time
-from datetime import datetime
-from datetime import date
-import calendar
+from dateTime import getTime, getDate 
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -35,30 +33,6 @@ bot = ChatBot(
 
 bot.read_only=True #Comment this out if you want the bot to learn based on experience
 print("Bot Learn Read Only:" + str(bot.read_only))
-
-def getTime():
-    now = datetime.now()
-    mm = str(now.month)
-    dd = str(now.day)
-    yyyy = str(now.year)
-    hour = str(now.hour)
-    minute = str(now.minute)
-    second = str(now.second)
-    mydate = date.today()
-    weekday = calendar.day_name[mydate.weekday()]
-    return "The time is now " + hour + ":" + minute
-
-def getDate():
-    now = datetime.now()
-    mm = str(now.month)
-    dd = str(now.day)
-    yyyy = str(now.year)
-    hour = str(now.hour)
-    minute = str(now.minute)
-    second = str(now.second)
-    mydate = date.today()
-    weekday = calendar.day_name[mydate.weekday()]
-    return "Today is " + weekday + ", " + mm + "/" + dd + "/" + yyyy
 
 
 #You can comment these out for production later since you won't be training everytime:

@@ -88,6 +88,11 @@ h3 {
 	min-height: 68px;
 }
 
+.avatar{
+  -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
 .botText span {
     padding: 10px;
 	margin-left: 0px;

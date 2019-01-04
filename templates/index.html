@@ -3,17 +3,17 @@
   <head>
 	  <title>Hello, ChatBot!</title>
 	  <link rel="icon" type="image/png" href="/static/bot.png">
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css?version=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <h1>Chat Bot</h1>
     <div class="messagecontainer">
       <div id="chatbox">
-        <p class="botText"><img src="/static/bot.png" width="64" height="64" align="left" style="margin: 2px;"><span>Greetings!</span></p>
+        <p class="botText"><img class="avatar" src="/static/bot.png" width="64" height="64" align="left" style="margin: 2px;"><span>Greetings!</span></p>
       </div>
       <div id="typing">
-        <p class="botText"><img src="/static/bot.png" width="64" height="64" align="left" style="margin: 2px;"><span><img src="/static/typingnow.gif"></span></p><br>
+        <p class="botText"><img class="avatar" src="/static/bot.png" width="64" height="64" align="left" style="margin: 2px;"><span><img src="/static/typingnow.gif"></span></p><br>
       </div>
       <div id="userInput">
         <input id="textInput" type="text" name="msg" placeholder="Message" autofocus>
@@ -27,7 +27,7 @@
 			}
         function getBotResponse() {
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><img src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"><span>' + data + '</span></p>';
+            var botHtml = '<p class="botText"><img class="avatar" src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"><span>' + data + '</span></p>';
 			document.getElementById('typing').style.visibility = "hidden";
             $("#chatbox").append(botHtml);
             document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});

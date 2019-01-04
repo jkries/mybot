@@ -24,7 +24,6 @@ if imageExt == 'png':
     if exists:
         os.remove('static/bot.png')
     os.rename('avatar.png','static/bot.png')
-    os.remove('avatar.png')
     print('Success! Your ChatBot avatar has been updated.')
 elif imageExt == 'jpg':
     #Convert to png

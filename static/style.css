@@ -1,9 +1,10 @@
 body {
     font-family: Garamond;
+    background-color: #000;
 }
 
 h1 {
-    color: black;
+    color: white;
     margin-bottom: 0;
     margin-top: 0;
     text-align: center;
@@ -40,18 +41,23 @@ h3 {
 }
 
 #userInput {
+    background-color: #fff;
     margin-left: auto;
     margin-right: auto;
     /*width: 40%;*/
     margin-top: 10px;
+    border: 2px solid white;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding:5px;
 }
 
 #textInput {
-    width: 87%;
+    width: 90%;
     border: none;
     border-bottom: 3px solid #009688;
     font-family: monospace;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 #buttonInput {
@@ -73,6 +79,7 @@ h3 {
     padding: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .botText {
@@ -86,11 +93,6 @@ h3 {
     border-radius: 10px;
 	padding: 5px;
 	min-height: 68px;
-}
-
-.avatar{
-  -webkit-border-radius: 10px;
-    border-radius: 10px;
 }
 
 .botText span {

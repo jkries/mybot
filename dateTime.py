@@ -1,24 +1,20 @@
-from datetime import datetime
+from datetime import datetime, timedelta
+from pytz import timezone
+import pytz
 from datetime import date
 import calendar
 
-now = datetime.now()
-mm = str(now.month)
-dd = str(now.day)
-yyyy = str(now.year)
-hour = str(now.hour)
-minute = str(now.minute)
-second = str(now.second)
-mydate = date.today()
-weekday = calendar.day_name[mydate.weekday()]
-
 def getTime():
-    now = datetime.now()
+    now = datetime.now(pytz.timezone("America/New_York"))
+    #now = datetime.utcnow()
+    myTimeZone = " EST"
     mm = str(now.month)
     dd = str(now.day)
     yyyy = str(now.year)
     hour = str(now.hour)
     minute = str(now.minute)
+    if now.minute < 10:
+        minute = '0' + str(now.minute)
     second = str(now.second)
     mydate = date.today()
     if now.hour >= 12:
@@ -28,19 +24,20 @@ def getTime():
     if now.hour > 12:
         hour = str(now.hour - 12)
     weekday = calendar.day_name[mydate.weekday()]
-    return "The time is now " + hour + ":" + minute + ampm
+    return "The time is now " + hour + ":" + minute + ampm + myTimeZone
 
 def getDate():
-    now = datetime.now()
+    now = datetime.now(pytz.timezone("America/New_York"))
     mm = str(now.month)
     dd = str(now.day)
     yyyy = str(now.year)
     hour = str(now.hour)
     minute = str(now.minute)
     second = str(now.second)
-    mydate = date.today()
-    weekday = calendar.day_name[mydate.weekday()]
-    return "Today is " + weekday + ", " + mm + "/" + dd + "/" + yyyy
+    weekday = now.weekday()
+    week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    weekdayName = week[weekday]
+    return "Today is " + weekdayName + ", " + mm + "/" + dd + "/" + yyyy
 
 print("Hello there!")
 print(getTime())

@@ -7,6 +7,9 @@ import random
 ##Experimental Date Time
 from dateTime import getTime, getDate 
 
+#Google it:
+from googleNow import tryGoogle
+
 import logging
 logging.basicConfig(level=logging.INFO)
 

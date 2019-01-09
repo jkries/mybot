@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello Chat Bot</title>
+    <title>Marvin the Chat Bot</title>
     <link rel="icon" type="image/png" href="/static/bot.png">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+    var userSound = new Audio('/static/userSend.mp3');
+    var botSound = new Audio('/static/botSend.mp3');
+
+    function playAudio1() {
+      userSound.play();
+    }
+    function playAudio2() {
+      botSound.play();
+    }
+    </script>
+
   </head>
   <body onload="getFirstResponse('Hello');">
-	  <h1>Hello ChatBot!</h1>
+    <h1>Hello Chat Bot</h1>
     <div class="messagecontainer">
       <div id="chatbox">
         <!--Nothing here in the beginning-->
@@ -76,18 +89,6 @@
       </script>
     </div>
 
-    <script>
-    var userSound = new Audio('/static/userSend.mp3');
-    var botSound = new Audio('/static/botSend.mp3');
-
-    function playAudio1() {
-      userSound.play();
-    }
-    function playAudio2() {
-      botSound.play();
-    }
-
-    </script>
-
   </body>
+
 </html>

@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body onload="getFirstResponse('Hello');">
-    <h1>Marvin the Chat Bot</h1>
+	  <h1>Hello ChatBot!</h1>
     <div class="messagecontainer">
       <div id="chatbox">
         <!--Nothing here in the beginning-->
@@ -51,6 +51,7 @@
         }
         $("#textInput").keypress(function(e) {
             if(e.which == 13) {
+              playAudio1();
               document.getElementById("buttonInput").disabled = true;
               document.getElementById("textInput").disabled = true;
 				rawText = $("#textInput").val();
@@ -62,6 +63,7 @@
             }
         });
         $("#buttonInput").click(function() {
+          playAudio1();
           document.getElementById("buttonInput").disabled = true;
           document.getElementById("textInput").disabled = true;
 				rawText = $("#textInput").val();
@@ -69,24 +71,14 @@
           		var userHtml = '<p class="userText">' + rawText + '</p>';
           		//$("#textInput").val("");
           		$("#chatbox").append(userHtml);
-              playAudio1();
 				setTimeout(botTyping, 750);
         })
       </script>
     </div>
 
-    <audio id="myAudio1">
-      <source src="/static/userSend.ogg" type="audio/ogg">
-      Your browser does not support the audio element.
-    </audio>
-    <audio id="myAudio2">
-      <source src="/static/botSend.ogg" type="audio/ogg">
-      Your browser does not support the audio element.
-    </audio>
-
     <script>
-    var userSound = document.getElementById("myAudio1");
-    var botSound = document.getElementById("myAudio2");
+    var userSound = new Audio('/static/userSend.mp3');
+    var botSound = new Audio('/static/botSend.mp3');
 
     function playAudio1() {
       userSound.play();
@@ -94,6 +86,7 @@
     function playAudio2() {
       botSound.play();
     }
+
     </script>
 
   </body>

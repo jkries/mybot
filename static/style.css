@@ -90,12 +90,12 @@ h3 {
     border-radius: 10px;
 	  padding: 5px;
 	  min-height: 68px;
+    margin-right: 25%;
 }
 
-.botText span {
-    padding: 10px;
-	  /*margin-left: 0px;*/
-	  position: relative; top:4px;
+.avatar{
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 #tidbit {

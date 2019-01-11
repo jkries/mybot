@@ -12,6 +12,8 @@ logging.basicConfig(level=logging.INFO)
 
 application = Flask(__name__)
 
+chatbotName = 'Chat Bot'
+
 bot = ChatBot(
     "ChatBot",
     logic_adapters=[

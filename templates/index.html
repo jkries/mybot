@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{botName}}</title>
+    <title>{{chatbotName}}</title>
     <link rel="icon" type="image/png" href="/static/bot.png">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,13 +20,13 @@
 
   </head>
   <body onload="getFirstResponse('Hello');">
-    <h1>{{botName}}</h1>
+    <h1>Marvin the Chat Bot</h1>
     <div class="messagecontainer">
       <div id="chatbox">
         <!--Nothing here in the beginning-->
       </div>
       <div id="typing">
-        <p class="botText"><img src="/static/bot.png" width="64" height="64" align="left" style="margin: 2px;"><span><img src="/static/typingnow.gif"></span></p><br>
+        <table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top"><img src="/static/typingnow.gif"></td></tr></table>
       </div>
       <div id="userInput">
         <input id="textInput" type="text" name="msg" placeholder="Message" autofocus>
@@ -40,7 +40,7 @@
 			}
         function getFirstResponse(firstText) {
           $.get("/get", { msg: firstText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width=100%><tr><td width="70" valign="top"><img src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);
@@ -52,7 +52,7 @@
         }
         function getBotResponse() {
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width=100%><tr><td width="70" valign="top"><img src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="/static/bot.png" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);

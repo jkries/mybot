@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.response_selection import get_random_response
+import random
 #from chatterbot.trainers import ChatterBotCorpusTrainer
 
 import logging
 logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
+
+chatbotName = 'Demo ChatBot'
 
 bot = ChatBot(
     "ChatBot",
@@ -17,7 +20,7 @@ bot = ChatBot(
         {
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
             'threshold': 0.65,
-            'default_response': 'I don\'t have a response for that. What else can we talk about?'
+            'default_response': 'IDKnull'
         }
     ],
     response_selection_method=get_random_response, #Comment this out if you want best response
@@ -36,12 +39,15 @@ print("Bot Learn Read Only:" + str(bot.read_only))
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", botName = chatbotName)
 
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
     botReply = str(bot.get_response(userText))
+    noResponse = ["I don't know.", "I'm not sure about that.", "Is there a different way you can ask that?","I don't have a response for that.","I will have to give that some thought.","I don't really know what you are asking."]
+    if botReply is "IDKnull":
+        botReply = random.choice(noResponse)
     return botReply
 
 if __name__ == "__main__":

@@ -22,7 +22,11 @@ h3 {
 	width: 100%;
 	max-width: 750px;
 	margin-left: auto; margin-right: auto;
-	/*border: 1px solid black;*/
+  background-color: #ccc;
+  padding:3px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+	border: 1px solid white;
 }
 
 #chatbox {

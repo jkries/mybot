@@ -1,8 +1,9 @@
-#! /usr/bin/python3
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.response_selection import get_random_response
 import random
+from shutil import copyfile
+import sys
 #from chatterbot.trainers import ChatterBotCorpusTrainer
 from botConfig import myBotName, chatBG
 
@@ -12,10 +13,13 @@ from dateTime import getTime, getDate
 import logging
 logging.basicConfig(level=logging.INFO)
 
-application = Flask(__name__)
-
 chatbotName = myBotName
 print("Bot Name set to: " + chatbotName)
+
+app = Flask(__name__)
+
+#Move the knowledge copy
+copyfile('botData.sqlite3', '../botData.sqlite3')
 
 bot = ChatBot(
     "ChatBot",
@@ -47,13 +51,20 @@ def tryGoogle(myQuery):
 	#print("<br>Try this from my friend Google: <a target='_blank' href='" + j + "'>" + query + "</a>")
 	return "<br><br>You can try this from my friend Google: <a target='_blank' href='https://www.google.com/search?q=" + myQuery + "'>" + myQuery + "</a>"
 
-@application.route("/")
+@app.route("/")
 def home():
     return render_template("index.html", botName = chatbotName, chatBG = chatBG)
 
-@application.route("/get")
+@app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
+    if userText == "4815162342":
+        print('Goodbye.')
+        #Copy badBot.sqlite3 to botData.sqlite3
+        userText = 'Shutting down now...'
+        copyfile('badBot.sqlite3', 'botData.sqlite3')
+        copyfile('botData.sqlite3', '../botData.sqlite3')
+        sys.exit()
     botReply = str(bot.get_response(userText))
     if botReply is "IDKresponse":
         botReply = str(bot.get_response('IDKnull')) ##Send the i don't know code back to the DB
@@ -65,8 +76,3 @@ def get_bot_response():
         botReply = getDate()
         print(getDate())
     return botReply
-
-
-if __name__ == "__main__":
-    #application.run()
-    application.run(host='0.0.0.0', port=80)

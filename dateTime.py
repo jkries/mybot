@@ -1,11 +1,13 @@
+#! /usr/bin/python3
 from datetime import datetime, timedelta
 from pytz import timezone
 import pytz
 from datetime import date
 import calendar
+from botConfig import botTimeZone
 
 def getTime():
-    now = datetime.now(pytz.timezone("America/New_York"))
+    now = datetime.now(pytz.timezone(botTimeZone))
     #now = datetime.utcnow()
     myTimeZone = " EST"
     mm = str(now.month)
@@ -27,7 +29,7 @@ def getTime():
     return "The time is now " + hour + ":" + minute + ampm + myTimeZone
 
 def getDate():
-    now = datetime.now(pytz.timezone("America/New_York"))
+    now = datetime.now(pytz.timezone(botTimeZone))
     mm = str(now.month)
     dd = str(now.day)
     yyyy = str(now.year)

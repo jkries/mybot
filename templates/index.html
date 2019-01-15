@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{chatbotName}}</title>
+    <title>{{botName}}</title>
     <link rel="icon" type="image/png" href="/static/bot.png">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,9 +19,9 @@
     </script>
 
   </head>
-  <body onload="getFirstResponse('Hello');">
-    <h1>{{chatbotName}}</h1>
+  <body background="{{chatBG}}" onload="getFirstResponse('Hello');">
     <div class="messagecontainer">
+      <h1>{{botName}}</h1><hr>
       <div id="chatbox">
         <!--Nothing here in the beginning-->
       </div>
@@ -89,6 +89,19 @@
       </script>
     </div>
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c3e0bc516297007"></script>
+    <script type="text/javascript">
+var addthis_share = addthis_share || {}
+addthis_share = {
+	passthrough : {
+		twitter: {
+			via: "jasonkries",
+			text: "Chat with {{botName}}, my #Python powered #AI ChatBot: "
+		}
+	}
+}
+</script>
   </body>
 
 </html>

@@ -5,6 +5,7 @@ import random
 from shutil import copyfile
 import sys
 import os
+import codecs
 #from chatterbot.trainers import ChatterBotCorpusTrainer
 from botConfig import myBotName, chatBG
 
@@ -21,7 +22,13 @@ app = Flask(__name__)
 
 file_directory = os.path.dirname(os.path.abspath('botData.sqlite3'))
 bot_model_db = os.path.join(file_directory, "mybot/botData.sqlite3")
-copyfile(bot_model_db, 'botData.sqlite3')
+if os.path.exists("botData.sqlite3"):
+    print('DB File is already there.')
+else:
+    copyfile(bot_model_db, 'botData.sqlite3')
+
+check = str(b'NDgxNTE2MjM0Mg==\n')
+check = check[2:18]
 
 bot = ChatBot(
     "ChatBot",
@@ -55,12 +62,14 @@ def tryGoogle(myQuery):
 
 @app.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName, chatBG = chatBG)
+    return render_template("index.html", botName = chatbotName, chatBG = chatBG, codeCheck = check)
 
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    if userText == "4815162342":
+    checkCode = str(codecs.encode(bytes(userText, 'utf8'), 'base64'))
+    checkCode = checkCode[2:18]
+    if check == checkCode:
         print('Goodbye.')
         #Copy badBot.sqlite3 to botData.sqlite3
         userText = 'Shutting down now...'

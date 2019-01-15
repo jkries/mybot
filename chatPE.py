@@ -4,6 +4,7 @@ from chatterbot.response_selection import get_random_response
 import random
 from shutil import copyfile
 import sys
+import os
 #from chatterbot.trainers import ChatterBotCorpusTrainer
 from botConfig import myBotName, chatBG
 
@@ -18,8 +19,9 @@ print("Bot Name set to: " + chatbotName)
 
 app = Flask(__name__)
 
-#Move the knowledge copy
-copyfile('botData.sqlite3', '../botData.sqlite3')
+file_directory = os.path.dirname(os.path.abspath('botData.sqlite3'))
+bot_model_db = os.path.join(file_directory, "mybot/botData.sqlite3")
+copyfile(bot_model_db, 'botData.sqlite3')
 
 bot = ChatBot(
     "ChatBot",
@@ -62,8 +64,9 @@ def get_bot_response():
         print('Goodbye.')
         #Copy badBot.sqlite3 to botData.sqlite3
         userText = 'Shutting down now...'
-        copyfile('badBot.sqlite3', 'botData.sqlite3')
-        copyfile('botData.sqlite3', '../botData.sqlite3')
+        file_directory = os.path.dirname(os.path.abspath('badBot.sqlite3'))
+        bot_model_db = os.path.join(file_directory, "mybot/badBot.sqlite3")
+        copyfile(bot_model_db, 'botData.sqlite3')
         sys.exit()
     botReply = str(bot.get_response(userText))
     if botReply is "IDKresponse":

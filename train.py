@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 #from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.response_selection import get_random_response
@@ -56,3 +58,4 @@ bot.set_trainer(ChatterBotCorpusTrainer)
 bot.train("data/trainingdata.yml")
 
 print("I am all trained up and ready to chat!")
+print("If on PythonAnywhere, run this command: cp botData.sqlite3 ../botData.sqlite3")

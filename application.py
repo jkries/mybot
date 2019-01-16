@@ -30,8 +30,8 @@ bot = ChatBot(
         }
     ],
     response_selection_method=get_random_response, #Comment this out if you want best response
-    input_adapter="chatterbot.input.VariableInputTypeAdapter",
-    output_adapter="chatterbot.output.OutputAdapter",
+    #input_adapter="chatterbot.input.VariableInputTypeAdapter",
+    #output_adapter="chatterbot.output.OutputAdapter",
     storage_adapter="chatterbot.storage.SQLStorageAdapter",
     database="botData.sqlite3"
 )

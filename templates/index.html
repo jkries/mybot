@@ -68,7 +68,7 @@
               document.getElementById("buttonInput").disabled = true;
               document.getElementById("textInput").disabled = true;
 				rawText = $("#textInput").val();
-        if(rawText == ""){
+        if(rawText.trim() == ""){
           rawText = "Nothing"
         }
 				$("#textInput").val("");
@@ -87,7 +87,7 @@
           document.getElementById("buttonInput").disabled = true;
           document.getElementById("textInput").disabled = true;
 				rawText = $("#textInput").val();
-        if(rawText == ""){
+        if(rawText.trim() == ""){
           rawText = "Nothing"
         }
 				$("#textInput").val("");

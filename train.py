@@ -21,7 +21,7 @@ with open('data/trainingdata.yml', 'w') as f:
         lines = csv.reader(g)
         for line in lines:
             lineCount += 1
-            if lineCount >= 1:
+            if lineCount > 1:
                 f.write("\r\n- - " + line[0])
                 f.write("\r\n  - " + line[1])
 

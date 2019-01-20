@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.response_selection import get_random_response
 import random
+import csv
 from shutil import copyfile
 import sys
 import os
@@ -97,4 +98,10 @@ def get_bot_response():
     elif botReply == "getDATE":
         botReply = getDate()
         print(getDate())
+    ##Log to CSV file
+    print("Logging to CSV file now")
+    with open('BotLog.csv', 'a', newline='') as logFile:
+        newFileWriter = csv.writer(logFile)
+        newFileWriter.writerow([userText, botReply])
+        logFile.close()
     return botReply

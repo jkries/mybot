@@ -24,10 +24,12 @@ with open('../BotLog.csv') as g:
     for line in lines:
         userText = line[0]
         botReply = line[1]
+        print("")
         print('##################################################')
         print('User said:   ' + userText)
         print('Bot replied: ' + botReply)
         print('##################################################')
+        print("")
         print('To add/ retrain, type the new response, then press Enter.')
         print('To keep/ignore this response, press enter')
         print('##################################################')
@@ -67,11 +69,12 @@ bot = ChatBot(
 bot.set_trainer(ChatterBotCorpusTrainer)
 bot.train("data/trainingdata.yml")
 
+print("")
 print('##################################################')
 print("I am all trained up and ready to chat!")
 print("If on PythonAnywhere, run this command: cp botData.sqlite3 ../botData.sqlite3")
 print('##################################################')
-
+print("")
 print('Shall I delete the recent conversation logs?')
 userConfirm = input('Press y or n: ')
 

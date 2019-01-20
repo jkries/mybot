@@ -10,6 +10,7 @@ logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 chatbotName = 'Demo ChatBot'
+botAvatar = '/static/bot.png'
 
 bot = ChatBot(
     "ChatBot",
@@ -39,7 +40,7 @@ print("Bot Learn Read Only:" + str(bot.read_only))
 
 @app.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName)
+    return render_template("index.html", botName = chatbotName, botAvatar = botAvatar)
 
 @app.route("/get")
 def get_bot_response():

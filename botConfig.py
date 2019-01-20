@@ -1,8 +1,9 @@
 #! /usr/bin/python3
 
 ##Change the following values to customize your ChatBot:
-myBotName = "My Demo Chat Bot"
+myBotName = "Marvin the ChatBot"
 botTimeZone = "America/New_York"  ##See the list full below
+botAvatar = "/static/bot.png" ##This can either be an image in your static folder or a web url to an image
 chatBG = "/static/bg.jpg"  ##This can either be an image in your static folder or a web url to an image
 
 ##List of timezones:

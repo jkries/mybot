@@ -43,8 +43,8 @@ bot = ChatBot(
         }
     ],
     response_selection_method=get_random_response, #Comment this out if you want best response
-    #input_adapter="chatterbot.input.VariableInputTypeAdapter",
-    #output_adapter="chatterbot.output.OutputAdapter",
+    input_adapter="chatterbot.input.VariableInputTypeAdapter",
+    output_adapter="chatterbot.output.OutputAdapter",
     storage_adapter="chatterbot.storage.SQLStorageAdapter",
     database="botData.sqlite3"
 )
@@ -62,7 +62,7 @@ def tryGoogle(myQuery):
 
 @app.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName, chatBG = chatBG, codeCheck = check)
+    return render_template("index.html", botName = chatbotName, chatBG = chatBG, , botAvatar = botAvatar, codeCheck = check)
 
 @app.route("/get")
 def get_bot_response():

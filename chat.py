@@ -3,8 +3,9 @@ from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.response_selection import get_random_response
 import random
-#from chatterbot.trainers import ChatterBotCorpusTrainer
-from botConfig import myBotName, chatBG
+import csv
+import os
+from botConfig import myBotName, chatBG, botAvatar
 
 ##Experimental Date Time
 from dateTime import getTime, getDate
@@ -16,6 +17,14 @@ application = Flask(__name__)
 
 chatbotName = myBotName
 print("Bot Name set to: " + chatbotName)
+print("Background is " + chatBG)
+print("Avatar is " + botAvatar)
+
+#Create Log file
+try:
+    file = open('BotLog.csv', 'r')
+except IOError:
+    file = open('BotLog.csv', 'w')
 
 bot = ChatBot(
     "ChatBot",
@@ -49,7 +58,7 @@ def tryGoogle(myQuery):
 
 @application.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName, chatBG = chatBG)
+    return render_template("index.html", botName = chatbotName, chatBG = chatBG, botAvatar = botAvatar)
 
 @application.route("/get")
 def get_bot_response():
@@ -64,6 +73,12 @@ def get_bot_response():
     elif botReply == "getDATE":
         botReply = getDate()
         print(getDate())
+    ##Log to CSV file
+    print("Logging to CSV file now")
+    with open('BotLog.csv', 'a', newline='') as logFile:
+        newFileWriter = csv.writer(logFile)
+        newFileWriter.writerow([userText, botReply])
+        logFile.close()
     return botReply
 
 

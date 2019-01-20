@@ -49,7 +49,7 @@ def tryGoogle(myQuery):
 
 @application.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName, chatBG = chatBG, , botAvatar = botAvatar)
+    return render_template("index.html", botName = chatbotName, chatBG = chatBG, botAvatar = botAvatar)
 
 @application.route("/get")
 def get_bot_response():

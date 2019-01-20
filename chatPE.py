@@ -7,7 +7,7 @@ import sys
 import os
 import codecs
 #from chatterbot.trainers import ChatterBotCorpusTrainer
-from botConfig import myBotName, chatBG
+from botConfig import myBotName, chatBG, botAvatar
 
 ##Experimental Date Time
 from dateTime import getTime, getDate
@@ -17,6 +17,12 @@ logging.basicConfig(level=logging.INFO)
 
 chatbotName = myBotName
 print("Bot Name set to: " + chatbotName)
+
+#Create Log file
+try:
+    file = open('BotLog.csv', 'r')
+except IOError:
+    file = open('BotLog.csv', 'w')
 
 app = Flask(__name__)
 
@@ -62,7 +68,7 @@ def tryGoogle(myQuery):
 
 @app.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName, chatBG = chatBG, , botAvatar = botAvatar, codeCheck = check)
+    return render_template("index.html", botName = chatbotName, chatBG = chatBG, botAvatar = botAvatar, codeCheck = check)
 
 @app.route("/get")
 def get_bot_response():

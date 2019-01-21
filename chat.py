@@ -5,7 +5,7 @@ from chatterbot.response_selection import get_random_response
 import random
 import csv
 import os
-from botConfig import myBotName, chatBG, botAvatar
+from botConfig import myBotName, chatBG, botAvatar, useGoogle
 
 ##Experimental Date Time
 from dateTime import getTime, getDate
@@ -66,7 +66,8 @@ def get_bot_response():
     botReply = str(bot.get_response(userText))
     if botReply is "IDKresponse":
         botReply = str(bot.get_response('IDKnull')) ##Send the i don't know code back to the DB
-        botReply = botReply + tryGoogle(userText)
+        if useGoogle == "yes":
+            botReply = botReply + tryGoogle(userText)
     elif botReply == "getTIME":
         botReply = getTime()
         print(getTime())

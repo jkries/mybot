@@ -5,7 +5,7 @@ from chatterbot.response_selection import get_random_response
 import random
 import csv
 import os
-from botConfig import myBotName, chatBG, botAvatar, useGoogle
+from botConfig import myBotName, chatBG, botAvatar, useGoogle, confidenceLevel
 
 ##Experimental Date Time
 from dateTime import getTime, getDate
@@ -19,6 +19,7 @@ chatbotName = myBotName
 print("Bot Name set to: " + chatbotName)
 print("Background is " + chatBG)
 print("Avatar is " + botAvatar)
+print("Confidence level set to " + str(confidenceLevel))
 
 #Create Log file
 try:
@@ -34,7 +35,7 @@ bot = ChatBot(
         },
         {
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
-            'threshold': 0.65,
+            'threshold': confidenceLevel,
             'default_response': 'IDKresponse'
         }
     ],

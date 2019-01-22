@@ -4,7 +4,7 @@ from chatterbot import ChatBot
 from chatterbot.response_selection import get_random_response
 import random
 #from chatterbot.trainers import ChatterBotCorpusTrainer
-from botConfig import myBotName, chatBG, botAvatar, useGoogle
+from botConfig import myBotName, chatBG, botAvatar, useGoogle, confidenceLevel
 
 ##Experimental Date Time
 from dateTime import getTime, getDate
@@ -16,6 +16,8 @@ application = Flask(__name__)
 
 chatbotName = myBotName
 print("Bot Name set to: " + chatbotName)
+print("Confidence level set to " + str(confidenceLevel))
+
 
 bot = ChatBot(
     "ChatBot",
@@ -25,7 +27,7 @@ bot = ChatBot(
         },
         {
             'import_path': 'chatterbot.logic.LowConfidenceAdapter',
-            'threshold': 0.65,
+            'threshold': confidenceLevel,
             'default_response': 'IDKresponse'
         }
     ],

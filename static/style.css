@@ -100,6 +100,8 @@ h3 {
 .avatar{
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  max-width: 64px;
+  max-height: 96px;
 }
 
 #tidbit {

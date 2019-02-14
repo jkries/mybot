@@ -26,7 +26,7 @@
         <!--Nothing here in the beginning-->
       </div>
       <div id="typing">
-        <table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top"><img src="/static/typingnow.gif"></td></tr></table>
+        <table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top"><img src="/static/typingnow.gif"></td></tr></table>
       </div>
       <div id="userInput">
         <input id="textInput" type="text" name="msg" placeholder="Message" autofocus>
@@ -40,7 +40,7 @@
 			}
         function getFirstResponse(firstText) {
           $.get("/get", { msg: firstText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);
@@ -52,7 +52,7 @@
         }
         function getBotResponse() {
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" width="64" height="64" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
             playAudio2();
             $("#chatbox").append(botHtml);

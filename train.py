@@ -11,7 +11,9 @@ import csv
 import logging
 logging.basicConfig(level=logging.INFO)
 
-lineCount = 0
+lineCount = -1
+successCount = 0
+emptyCount = 0
 with open('data/trainingdata.yml', 'w') as f:
     f.write("categories:\r\n")
     f.write("- Conversations")
@@ -20,11 +22,20 @@ with open('data/trainingdata.yml', 'w') as f:
         lines = csv.reader(g)
         for line in lines:
             lineCount += 1
-            if lineCount > 1:
+            if not line[0] or not line[1]:
+                emptyCount += 1
+                print("WARNING: I had to skip row #" + str(lineCount) + " due to missing data.")
+            if lineCount > 1 and line[0] and line[1]:
+                successCount += 1
                 f.write("\r\n- - " + line[0])
                 f.write("\r\n  - " + line[1])
 
-print("I have successfully imported " + str(lineCount) + " rows of info and will now retrain...")
+print("==============================================")
+print("There are " + str(lineCount - 1) + " rows in chatbot.csv")
+print("==============================================")
+print("There were " + str(emptyCount) + " empty cells that I could not use for training.")
+print("==============================================")
+print("I have successfully imported " + str(successCount) + " rows of info and will now retrain...")
 
 if os.path.exists("botData.sqlite3"):
     os.remove("botData.sqlite3")

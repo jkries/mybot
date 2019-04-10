@@ -11,7 +11,7 @@ import csv
 import logging
 logging.basicConfig(level=logging.INFO)
 
-lineCount = -1
+lineCount = 0
 successCount = 0
 emptyCount = 0
 with open('data/trainingdata.yml', 'w') as f:
@@ -36,6 +36,7 @@ print("==============================================")
 print("There were " + str(emptyCount) + " empty cells that I could not use for training.")
 print("==============================================")
 print("I have successfully imported " + str(successCount) + " rows of info and will now retrain...")
+print("==============================================")
 
 if os.path.exists("botData.sqlite3"):
     os.remove("botData.sqlite3")

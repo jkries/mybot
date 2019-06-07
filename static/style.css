@@ -70,6 +70,16 @@ h3 {
     font-size: 17px;
 }
 
+.chatSuggest{
+    padding: 3px;
+    margin: 15px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 2px 1px #545454;
+    box-shadow: 2px 2px 2px 1px #545454;
+    background: #ffff00;
+}
+
 .userText {
     color: white;
     font-family: monospace;
@@ -95,6 +105,7 @@ h3 {
 	  padding: 5px;
 	  min-height: 68px;
     margin-right: 25%;
+    margin-bottom: 2px;
 }
 
 .avatar{

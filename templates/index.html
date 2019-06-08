@@ -36,7 +36,6 @@
         <input id="buttonInput" type="submit" value="Send">
       </div>
 
-      <!--<a class="chatSuggest" onclick="$(this).hide(); chatSuggest('Tell me about AI')";>Tell me about AI</a>-->
 
       <script>
 		  var rawText;
@@ -71,6 +70,11 @@
         }
 
         function chatSuggest(firstText) {
+          var userHtml = '<p class="userText">' + firstText + '</p>';
+          //$("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById('typing').style.visibility = "visible";
+
           $.get("/get", { msg: firstText }).done(function(data) {
             var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";
@@ -124,6 +128,8 @@
         })
       </script>
     </div>
+
+<!--<a class="chatSuggest" onclick="$(this).hide(); chatSuggest('Tell me about AI')";>Tell me about AI</a>-->
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c3e0bc516297007"></script>

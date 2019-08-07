@@ -19,7 +19,7 @@ if(userConfirm != "y" and userConfirm != "Y"):
     print('Now exiting log training mode...')
     sys.exit()
 
-with open('Botlog.csv') as g:
+with open('BotLog.csv') as g:
     lines = csv.reader(g)
     for line in lines:
         userText = line[0]

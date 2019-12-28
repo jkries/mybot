@@ -36,7 +36,7 @@ with open('BotLog.csv') as g:
             with open('data/chatbot.csv', 'a', newline='') as logFile:
                 newFileWriter = csv.writer(logFile)
                 newFileWriter.writerow([userText, updateResponse])
-                logFile.close()
+                #logFile.close()
 
 lineCount = 0
 with open('data/trainingdata.yml', 'w') as f:

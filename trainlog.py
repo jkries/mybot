@@ -1,9 +1,5 @@
 #! /usr/bin/python3
 
-#from flask import Flask, render_template, request
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
-
 #For getting the spreadsheet data from csv
 import os
 import csv

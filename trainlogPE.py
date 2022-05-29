@@ -1,9 +1,5 @@
 #! /usr/bin/python3
 
-#from flask import Flask, render_template, request
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
-
 #For getting the spreadsheet data from csv
 import os
 import csv
@@ -19,7 +15,7 @@ if(userConfirm != "y" and userConfirm != "Y"):
     print('Now exiting log training mode...')
     sys.exit()
 
-with open('../BotLog.csv') as g:
+with open('BotLog.csv') as g:
     lines = csv.reader(g)
     for line in lines:
         userText = line[0]
@@ -53,6 +49,6 @@ if(userConfirm != "y" and userConfirm != "Y"):
     print('Now exiting log training mode...')
     sys.exit()
 else:
-    if os.path.exists("../BotLog.csv"):
-        os.remove("../BotLog.csv")
+    if os.path.exists("BotLog.csv"):
+        os.remove("BotLog.csv")
         print("I removed the recent chat logs.")

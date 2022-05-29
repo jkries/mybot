@@ -39,7 +39,6 @@ with open('BotLog.csv') as g:
 print("")
 print('##################################################')
 print("I am all trained up and ready to chat!")
-print("If on PythonAnywhere, you may need to restart the application.")
 print('##################################################')
 print("")
 print('Shall I delete the recent conversation logs?')

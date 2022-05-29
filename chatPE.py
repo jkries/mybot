@@ -15,10 +15,11 @@ print("Confidence level set to " + str(confidenceLevel))
 
 
 #Create Log file
+botLog = os.path.abspath('mybot/BotLog.csv')
 try:
-    file = open('BotLog.csv', 'r')
+    file = open(botLog, 'r')
 except IOError:
-    file = open('BotLog.csv', 'w')
+    file = open(botLog, 'w')
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ def tryGoogle(myQuery):
 
 @app.route("/")
 def home():
-    return render_template("index.html", botName = chatbotName, chatBG = chatBG, botAvatar = botAvatar, codeCheck = check)
+    return render_template("index.html", botName = chatbotName, chatBG = chatBG, botAvatar = botAvatar)
 
 @app.route("/get")
 def get_bot_response():
@@ -46,7 +47,7 @@ def get_bot_response():
         print(getDate())
     ##Log to CSV file
     print("Logging to CSV file now")
-    with open('BotLog.csv', 'a', newline='') as logFile:
+    with open(botLog, 'a', newline='') as logFile:
         newFileWriter = csv.writer(logFile)
         newFileWriter.writerow([userText, botReply])
         logFile.close()

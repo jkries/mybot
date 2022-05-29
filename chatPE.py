@@ -3,7 +3,7 @@ import random
 import csv
 import os
 from botConfig import myBotName, chatBG, botAvatar, useGoogle, confidenceLevel
-from botRespond import getResponse
+from botRespondPE import getResponse
 
 ##Experimental Date Time
 from dateTime import getTime, getDate

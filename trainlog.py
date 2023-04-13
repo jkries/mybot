@@ -8,6 +8,12 @@ import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 
+print('##################################################')
+print('If you are running this on PythonAnywhere, you should run this command instead:')
+print('python3 trainlogPE.py')
+print('##################################################')
+print('')
+
 print('Do you want train your bot using recent conversation logs?')
 userConfirm = input('Press y or n: ')
 

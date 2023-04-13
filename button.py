@@ -1,5 +1,11 @@
 import pyperclip
 
+print('##################################################')
+print('If you are running this on PythonAnywhere, you should run this command instead:')
+print('python3 buttonPE.py')
+print('##################################################')
+print('')
+
 while True:
     print('What do you want the button to say:')
     linkText = input('Button Text: ')

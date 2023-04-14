@@ -1,5 +1,6 @@
 # Used by pip to install required python packages
 # Usage: pip install -r requirements.txt
+#On PythonAnywhere run this command: pip3 install --user -r requirements.txt
 
 Flask
 Pillow

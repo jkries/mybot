@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 import random
 import csv
 import os
+import urllib.parse
 from botConfig import myBotName, chatBG, botAvatar, useGoogle, confidenceLevel
 from botRespond import getResponse
 
@@ -24,8 +25,9 @@ except IOError:
     file = open('BotLog.csv', 'w')
 
 def tryGoogle(myQuery):
-	#print("<br>Try this from my friend Google: <a target='_blank' href='" + j + "'>" + query + "</a>")
-	return "<br><br>You can try this from my friend Google: <a target='_blank' href='https://www.google.com/search?q=" + myQuery + "'>" + myQuery + "</a>"
+    myQuery = myQuery.replace("'", "%27")
+    showQuery = urllib.parse.unquote(myQuery)
+    return "<br><br>You can try this from my friend Google: <a target='_blank' href='https://www.google.com/search?q=" + myQuery + "'>" + showQuery + "</a>"
 
 @application.route("/")
 def home():

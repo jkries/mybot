@@ -93,6 +93,7 @@
               document.getElementById("buttonInput").disabled = true;
               document.getElementById("textInput").disabled = true;
 				      rawText = $("#textInput").val();
+              rawText = encodeURI(rawText); //Experimental
               if(rawText.trim() == ""){
                 rawText = "Nothing"
               }
@@ -101,7 +102,7 @@
                   else{
                     showText = rawText;
                   }
-              		var userHtml = '<p class="userText">' + showText + '</p>';
+              		var userHtml = '<p class="userText">' + decodeURI(showText) + '</p>';
               		//$("#textInput").val("");
               		$("#chatbox").append(userHtml);
     				      setTimeout(botTyping, 750);
@@ -113,6 +114,7 @@
           document.getElementById("buttonInput").disabled = true;
           document.getElementById("textInput").disabled = true;
 				rawText = $("#textInput").val();
+        rawText = encodeURI(rawText); //Experimental
         if(rawText.trim() == ""){
           rawText = "Nothing"
         }
@@ -121,7 +123,7 @@
               else{
                 showText = rawText;
               }
-          		var userHtml = '<p class="userText">' + showText + '</p>';
+          		var userHtml = '<p class="userText">' + decodeURI(showText) + '</p>';
           		//$("#textInput").val("");
           		$("#chatbox").append(userHtml);
 				setTimeout(botTyping, 750);

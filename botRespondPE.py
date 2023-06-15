@@ -1,5 +1,6 @@
 from botConfig import confidenceLevel
 from difflib import SequenceMatcher
+import urllib.parse
 import csv
 import random
 import os
@@ -9,6 +10,7 @@ def similar(a, b):
 
 def getResponse(sendMsg):
     #return "You said: " + sendMsg
+    sendMsg = urllib.parse.unquote(sendMsg)
     #Loop through CSV knowledge file.  If a question is equal to or greater than the confidence level, add it to a list of possible responses. Then return a random responses
     lineCount = 0
     successCount = 0
